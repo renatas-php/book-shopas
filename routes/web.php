@@ -15,3 +15,7 @@ use App\Http\Controllers\BooksController;
 */
 
 Route::get('/', [BooksController::class, 'index']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

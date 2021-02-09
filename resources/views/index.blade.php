@@ -18,7 +18,7 @@
 			<li><a href="" class="nav-link">Nuoroda</a></li>
 			<li><a href="" class="nav-link">Nuoroda</a></li>
 			<li><a href="" class="nav-link">Nuoroda</a></li>
-			<li><a href="" class="nav-link login">Prisijungti</a></li>
+			<li><a href="{{ route('login') }}" class="nav-link login">Prisijungti</a></li>
 		</ul>
 	</div>
 	<div class="search-box">
