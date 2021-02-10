@@ -37,7 +37,7 @@
 		</div>
 
 		<div class="post-book">
-			<form action="{{ route('ideti') }}" method="POST">
+			<form action="{{ route('ideti') }}" method="POST" enctype="multipart/form-data">
             @csrf
 			  <div class="form-group">
 			    <label for="exampleFormControlInput1">Knygos pavadinimas</label>
@@ -49,15 +49,10 @@
 			  </div>
 			  <div class="form-group">
 			    <label for="exampleFormControlSelect1">Žanras</label>
-			    <select name="genre" class="form-control" id="exampleFormControlSelect1">
-			      <option>Drama</option>
-			      <option>Karinis</option>
-			      <option>Siaubo</option>
-			      <option>Fantastinis</option>
-			      <option>Dokumentinis</option>
-			      <option>Detektyvas</option>
-			      <option>Biografija</option>
-			      <option>Nuotykių</option>
+			    <select name="genre[]" class="form-control" id="exampleFormControlSelect1" multiple>
+				 @foreach($booksModelObject->genres as $genre)
+			      <option>{{ $genre }}</option>
+			     @endforeach
 			    </select>
 			  </div>
 			   <div class="form-group">
@@ -66,7 +61,7 @@
 			  </div>
 			  <div class="form-group">
 			    <label for="exampleFormControlFile1">Viršelio nuotrauka</label>
-			    <input type="file" class="form-control-file" name="cover">
+			    <input name="cover_img" type="file" class="form-control-file" id="cover_img">
 			  </div>
 			  <div class="form-group">
 			    <label for="exampleFormControlTextarea1">Aprašymas</label>

@@ -3,6 +3,25 @@
 	margin: 0;
 	box-sizing: border-box;
 }
+button {
+    border: none;
+    background: none;
+}
+button:focus {
+    outline: none;
+}
+input:focus {
+    outline: none;
+}
+.display-flex {
+    display:flex;
+}
+.align-items-center {
+    align-items: center;
+}
+.justify-space-btw {
+    justify-content: space-between;
+}
 .container {
 	margin: 0 50px;
 }
@@ -83,7 +102,14 @@
 .login {
 	border: 1px solid #3be8b0;
     border-radius: 25px;
-    padding: 3px 12px;
+    padding: 5px 15px;
+    background: none;
+    color: #9c9c9c;
+}
+.login:hover {
+    background: #3de8b1;
+    color: #fff!important;
+    cursor: pointer;
 }
 .books-container {
 	width: 95%;
@@ -96,6 +122,9 @@
 	border-radius: 5px;
 	flex: 0 0 18%;
     margin: 1%;
+}
+.books-container .book-item a {
+	text-decoration: none;
 }
 .books-container .book-item .description .button-section{
 	height: 50px;
@@ -184,6 +213,17 @@
 .login-register .welcome-text {
     margin: 15px 30px;
 }
+.login-register .welcome-text a {
+    text-decoration: none;
+    font-size: 17px;
+    letter-spacing: 1px;
+    font-family: system-ui;
+    font-weight: 500;
+    color: #42f3b9;
+}
+.login-register .welcome-text a:hover {
+    color: #4270f3;
+}
 .login-register .welcome-text h3 {
     font-size: 22px;
     color: #545454;
@@ -213,6 +253,9 @@
 	display: flex;
 	width: 85%;
     margin: auto;
+}
+.book-single .book-info {
+    width: 100%;
 }
 .book-single .book-cover img {
 	height: 350px;
@@ -331,5 +374,17 @@
     padding: 7px 15px;
     width: 80%;
     border-radius: 25px;
+    box-shadow: 0 3px 9px rgb(0 0 0 / 10%);
+}
+.right .post-book {
+    text-decoration: none;
+    font-family: system-ui;
+    background: #6f6f6f;
+    line-height: -24px;
+    font-size: 15px;
+    padding: 8px 25px;
+    letter-spacing: 1px;
+    border-radius: 25px;
+    color: #fff;
     box-shadow: 0 3px 9px rgb(0 0 0 / 10%);
 }

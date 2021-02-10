@@ -17,9 +17,12 @@ use App\Http\Controllers\BooksController;
 Route::get('/', [BooksController::class, 'index'])->name('index');
 
 Route::get('/ideti-knyga', [BooksController::class, 'create'])->name('ideti-knyga');
+Route::get('/knyga/{book}', [BooksController::class, 'show'])->name('knyga');
 Route::post('/', [BooksController::class, 'store'])->name('ideti');
+
+Route::get('valdymo-panele', [App\Http\Controllers\HomeController::class, 'index'])->name('valdymo-panele');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

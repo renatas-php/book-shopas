@@ -18,7 +18,7 @@ class CreateBooksTable extends Migration
             $table->integer('user_id');
             $table->string('title');
             $table->string('author');
-            $table->string('genre');
+            $table->json('genre');
             $table->integer('price');
             $table->string('cover_img');
             $table->string('discount')->nullable();

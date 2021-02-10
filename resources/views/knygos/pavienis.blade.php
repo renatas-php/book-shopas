@@ -4,7 +4,7 @@
 
 <!-- Basic Page Needs
 ================================================== -->
-<title>Knygynas</title>
+<title>Hireo</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -13,7 +13,6 @@
 @include('includes.css')
 <div class="container">
 	@include('partials.topnav')
-	<div class="top-box">
 	<div class="search-box">
 		<h3>
 			<strong>Hire experts or be hired for any job, any time.</strong>
@@ -25,28 +24,28 @@
 			<button class="btn-search">Ieškoti</button>
 		</div>		
 	</div>
-	<a href="{{ route('ideti-knyga') }}" class="post-book">Pasiūlyti knygą</a>
-	</div>
-	<div class="books-container">
-		<!-- Book Item -->
-        @foreach($books as $book)
-		
-		<div class="book-item">
-		<a href="{{ route('knyga', $book->id) }}">
-
-			<img class="main-img" src="{{ asset($book->cover_img) }}">
-			<div class="description">
-				<h1 class="title">{{ $book->title }}</h1>
-				<p class="author">{{ $book->author }}</p>
-				<p class="price">{{ $book->price }}.00 Eur</p>
-				<div class="button-section">
-				<a href="{{ route('knyga', $book->id) }}" class="button-look">Plačiau</a>
-				</div>
-			</div>
-		</a>
+	<div class="book-single">
+		<div class="book-cover">
+			<img src="{{ asset($book->cover_img) }}">
 		</div>
-        @endforeach
-		<!-- Book Item End -->
+		<div class="book-info">
+			<div class="main-info">
+				<h1 class="title">{{ $book->title }}</h1>
+				<div class="author-rating">
+					<h2 class="author">{{ $book->author }}</h2>
+					<div class="rating"></div>
+				</div>
+				<p class="genre">
+                @foreach( $book->genre as $gen )
+                {{ $gen }}
+                @endforeach
+                </p>
+			</div>
+			<div class="description">
+				{{ $book->description }}
+			</div>
+		</div>
+		
 	</div>
 </div>
 

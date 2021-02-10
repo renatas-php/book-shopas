@@ -32,5 +32,9 @@ class AppServiceProvider extends ServiceProvider
         View::composer(['/', 'index'], function($view) {
             $view->with('books', Book::all());
         });
+
+        View::composer(['knygos.ideti'], function($view) {
+            $view->with('booksModelObject', new Book());
+        });
     }
 }

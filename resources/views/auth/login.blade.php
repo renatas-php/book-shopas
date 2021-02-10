@@ -70,16 +70,6 @@
 				<!-- Button -->
 				<button class="btn-reg-log" type="submit">Prisijungti <i class="icon-material-outline-arrow-right-alt"></i></button>
             </form>
-				<!-- Social Login -->
-				<div class="social-login-separator"><span>or</span></div>
-				<div class="social-login-buttons">
-					<button class="facebook-login ripple-effect"><i class="icon-brand-facebook-f"></i> Log In via Facebook</button>
-					<button class="google-login ripple-effect"><i class="icon-brand-google-plus-g"></i> Log In via Google+</button>
-                    
-   
-				</div>
-			<img class="right-image" src="images/login.png">
-	</div>
 </div>
 
 </head>

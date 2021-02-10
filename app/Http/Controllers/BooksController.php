@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\Book;
 
@@ -35,10 +37,8 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {   
-        $cover = 'no';
-        if($request->hasFile('cover_img')){
-            $cover = $request->offer_img->store('covers');
-        } 
+
+        $file = $request->file('cover_img')->store('covers');
 
         $bookInsert = Book::create([
             'user_id' => auth()->user()->id,
@@ -46,7 +46,7 @@ class BooksController extends Controller
             'author' => $request->author,
             'genre' => $request->genre,
             'price' => $request->price,
-            'cover_img' => $cover,
+            'cover_img' => $file,
             'description' => $request->description,
             'approved' => false
         ]);
@@ -60,9 +60,9 @@ class BooksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Book $book)
     {
-        //
+        return view('knygos.pavienis')->with(compact('book'));
     }
 
     /**

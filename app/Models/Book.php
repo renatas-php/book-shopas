@@ -9,6 +9,13 @@ class Book extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'genre' => 'array'
+    ];
+
     protected $fillable = ['user_id', 'title', 'author', 'genre', 
     'price', 'cover_img', 'discount', 'approved', 'description'];
+
+    public $genres = ['Drama', 'Karinis', 'Siaubo', 'Fantastinis', 
+        'Dokumentinis', 'Detektyvas', 'Biografija', 'Nuotykių'];
 }
