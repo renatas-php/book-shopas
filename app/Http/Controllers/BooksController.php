@@ -13,9 +13,8 @@ class BooksController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-        $books = Book::all();      
-        return view('index')->with('books', $books);
+    {        
+        return view('index');
     }
 
     /**
@@ -25,7 +24,7 @@ class BooksController extends Controller
      */
     public function create()
     {
-        //
+        return view('knygos.ideti');
     }
 
     /**
@@ -35,8 +34,24 @@ class BooksController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $cover = 'no';
+        if($request->hasFile('cover_img')){
+            $cover = $request->offer_img->store('covers');
+        } 
+
+        $bookInsert = Book::create([
+            'user_id' => auth()->user()->id,
+            'title' => $request->title,
+            'author' => $request->author,
+            'genre' => $request->genre,
+            'price' => $request->price,
+            'cover_img' => $cover,
+            'description' => $request->description,
+            'approved' => false
+        ]);
+
+        return view('index')->with('ok', 'Knygos pasiūlymas įkeltas');
     }
 
     /**

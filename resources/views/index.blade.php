@@ -21,6 +21,7 @@
 			<li><a href="{{ route('login') }}" class="nav-link login">Prisijungti</a></li>
 		</ul>
 	</div>
+	<div class="top-box">
 	<div class="search-box">
 		<h3>
 			<strong>Hire experts or be hired for any job, any time.</strong>
@@ -31,6 +32,8 @@
 			<input id="autocomplete-input" type="text" placeholder="Paieška">
 			<button class="btn-search">Ieškoti</button>
 		</div>		
+	</div>
+	<a href="{{ route('ideti-knyga') }}" class="post-book">Pasiūlyti knygą</a>
 	</div>
 	<div class="books-container">
 		<!-- Book Item -->

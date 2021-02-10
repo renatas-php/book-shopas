@@ -14,8 +14,12 @@ use App\Http\Controllers\BooksController;
 |
 */
 
-Route::get('/', [BooksController::class, 'index']);
+Route::get('/', [BooksController::class, 'index'])->name('index');
+
+Route::get('/ideti-knyga', [BooksController::class, 'create'])->name('ideti-knyga');
+Route::post('/', [BooksController::class, 'store'])->name('ideti');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
