@@ -16,6 +16,7 @@
             <li><button id="user-menu" class=""><i class="fas fa-user"></i></button>
             <div class="drop-menu">
             <ul>
+            <li><a href="{{ route('valdymo-panele') }}">Valdymo panelė</a></li>
             <li><a href="{{ route('mano-profilis', auth()->user()->id ) }}">Mano profilis</a></li>
             <li><a href="">Atsijungti</a></li>
             </ul>

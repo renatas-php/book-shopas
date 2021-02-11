@@ -43,14 +43,17 @@
 			<!-- Single Note -->
 			@foreach($books as $book)
 			<div class="single-note">
-				<div class="display-flex">
+				<div class="">
+					<form class="display-flex" action="{{ route('patvirtinti-knyga', $book->id) }}" method="POST">
+						@csrf 
+						@method('PUT')
 						<img class="book-cover" src="img/1.jpg">
 					<div class="display-flex flex-column padding-30">              
 						<span class="single-note-text">
-						<strong>Knygos pavadinimas:</strong> <a href="#">Karo Menas</a>
+						<strong>Knygos pavadinimas:</strong> {{ $book->title }}
 						</span>
 						<span class="single-note-text">
-						<strong>Įkėlė:</strong> renatas.kdfjdsk
+						<strong>Įkėlė:</strong> {{ $book->user->email }}
 						</span>
 						<span class="single-note-text">
 						<strong>Kaina:</strong> 200.00 Eur
@@ -59,7 +62,7 @@
 						<strong>Įkėlimo data:</strong> 2012-10-12
 						</span>
 						<div class="single-note-actions">
-							<a href="" class="single-note-look-btn">Patvirtinti </a>
+							<button type="submit" class="single-note-look-btn">Patvirtinti </button>
 							<a href="" class="single-note-look-btn">Atmesti </a>
 						</div>
 					</div>

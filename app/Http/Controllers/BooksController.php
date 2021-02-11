@@ -98,4 +98,14 @@ class BooksController extends Controller
     {
         //
     }
+
+    public function approve($id) {
+
+        $approveBook = Book::where('id', $id);
+
+        $data['approved'] = true;             
+        $approveBook->update($data);
+
+        return redirect()->back();
+    }
 }

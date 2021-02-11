@@ -19,6 +19,8 @@ Route::get('/', [BooksController::class, 'index'])->name('index');
 Route::get('/ideti-knyga', [BooksController::class, 'create'])->name('ideti-knyga');
 Route::get('/knyga/{book}', [BooksController::class, 'show'])->name('knyga');
 Route::post('/', [BooksController::class, 'store'])->name('ideti');
+Route::put('patvirtinti/{id}', [BooksController::class, 'approve'])->name('patvirtinti-knyga');
+
 
 Route::get('valdymo-panele', [App\Http\Controllers\HomeController::class, 'index'])->name('valdymo-panele');
 Route::get('mano-profilis/{user}', [App\Http\Controllers\HomeController::class, 'edit'])->name('mano-profilis');

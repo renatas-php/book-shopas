@@ -18,4 +18,8 @@ class Book extends Model
 
     public $genres = ['Drama', 'Karinis', 'Siaubo', 'Fantastinis', 
         'Dokumentinis', 'Detektyvas', 'Biografija', 'Nuotykių'];
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }
