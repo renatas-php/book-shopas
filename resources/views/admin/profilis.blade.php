@@ -33,28 +33,33 @@
 		</div>
 
 		<div class="post-book">
-			<form action="" method="POST" enctype="multipart/form-data">
+			<form action="{{ route('profilis-atnaujinti', auth()->user()->id) }}" method="POST">
             @csrf
             @method('PUT')
 			  <div class="form-group">
 			    <label for="exampleFormControlInput1">Jūsų el. paštas</label>
-			    <input type="text" name="title" class="form-control" value="{{ $user->email }}" readonly>
+			    <input type="text" name="email" class="form-control" value="{{ $user->email }}">
 			  </div>
-			  <div class="form-group">
-			    <label for="exampleFormControlInput1">Gimimo metai</label>
-			    <input type="text" name="author" class="form-control" value="{{ $user->years }}" placeholder="">
+			  <div class="display-flex justify-space-btw">
+					<div class="form-group flex-49">
+						<label for="exampleFormControlInput1">Gimimo metai</label>
+						<input type="text" name="years" class="form-control" value="{{ $user->years }}" readonly>
+					</div>
+					<div class="form-group flex-49">
+						<label for="exampleFormControlSelect1">Mėnuo</label>
+						<select name="month" class="form-control" readonly>				 
+						<option>{{ $user->month }}</option>			    
+						</select>
+					</div>
 			  </div>
-			  <div class="form-group">
-			    <label for="exampleFormControlSelect1">Mėnuo</label>
-			    <select name="genre" class="form-control" id="exampleFormControlSelect1">
-				 
-			      <option>{{ $user->month }}</option>
-			    
-			    </select>
-			  </div>
+
 			   <div class="form-group">
-			    <label for="exampleFormControlInput1">Slaptažodis</label>
-			    <input type="password" name="price" class="form-control" value="{{ md5($user->password) }}">
+			    <label for="exampleFormControlInput1">Senas Slaptažodis</label>
+			    <input type="password" class="form-control" value="{{ $user->password }}" readonly>
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleFormControlInput1">Naujas Slaptažodis</label>
+			    <input type="password" name="password" value="" class="form-control">
 			  </div>
 			  <div class="form-group">
 			    <button type="submit" class="btn-post-book">Išsaugoti</button>

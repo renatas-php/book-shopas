@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Book;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -43,5 +44,20 @@ class HomeController extends Controller
         else {
             return view('admin.profilis')->with('user', $user);
         }
+    }
+    public function store(Request $request) {
+        auth()->user()->update([
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+        ]);
+        
+        $user = auth()->user();
+        if(auth()->user()->role === 0){
+            return view('vartotojas.dashboard')->with('user', $user);
+        }
+        else {
+            return view('admin.dashboard')->with('user', $user);
+        }
+
     }
 }

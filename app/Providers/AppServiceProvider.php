@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        View::composer(['/', 'index'], function($view) {
+        View::composer(['/', 'index', 'admin.dashboard'], function($view) {
             $view->with('books', Book::all());
         });
 
