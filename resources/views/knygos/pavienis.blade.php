@@ -44,6 +44,7 @@
 			<div class="description">
 				{{ $book->description }}
 			</div>
+			<a href="{{ route('pranesimas', $book->id) }}" class="report-book">Pranešti apie knygą!</a>
 		</div>
 		
 	</div>

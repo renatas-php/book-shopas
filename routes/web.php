@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\ReportsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,10 +22,15 @@ Route::get('/knyga/{book}', [BooksController::class, 'show'])->name('knyga');
 Route::post('/', [BooksController::class, 'store'])->name('ideti');
 Route::put('patvirtinti/{id}', [BooksController::class, 'approve'])->name('patvirtinti-knyga');
 
-
 Route::get('valdymo-panele', [App\Http\Controllers\HomeController::class, 'index'])->name('valdymo-panele');
 Route::get('mano-profilis/{user}', [App\Http\Controllers\HomeController::class, 'edit'])->name('mano-profilis');
 Route::put('mano-profilis/{user}', [App\Http\Controllers\HomeController::class, 'store'])->name('profilis-atnaujinti');
+
+Route::get('/pranesimas/{book}', [ReportsController::class, 'create'])->name('pranesimas');
+Route::post('pranesti', [ReportsController::class, 'store'])->name('pranesti');
+Route::get('/pranesimai', [ReportsController::class, 'index'])->name('pranesimai');
+
+
 
 
 Auth::routes();

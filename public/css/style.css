@@ -323,6 +323,20 @@ input:focus {
     font-family: system-ui;
     color: #4e4e4e;
 }
+.book-single .report-book {
+    margin: 10px 50px;
+    font-family: system-ui;
+    color: #fff;
+    text-decoration: none;
+    background: #5aecbc;
+    padding: 4px 15px;
+    box-shadow: 0 4px 9px rgb(0 0 0 / 12%);
+    border-radius: 4px;
+}
+.book-single .report-book:hover {
+    background: #fff;
+    color: #5aecbc;
+}
 .dashboard-container {
     width: 70%;
     margin: 50px auto;
