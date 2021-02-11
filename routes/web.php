@@ -21,6 +21,7 @@ Route::get('/knyga/{book}', [BooksController::class, 'show'])->name('knyga');
 Route::post('/', [BooksController::class, 'store'])->name('ideti');
 
 Route::get('valdymo-panele', [App\Http\Controllers\HomeController::class, 'index'])->name('valdymo-panele');
+Route::get('mano-profilis/{user}', [App\Http\Controllers\HomeController::class, 'edit'])->name('mano-profilis');
 
 Auth::routes();
 

@@ -16,6 +16,12 @@ input:focus {
 .display-flex {
     display:flex;
 }
+.flex-column {
+    flex-direction: column;
+}
+.padding-30 {
+    padding: 30px;
+}
 .align-items-center {
     align-items: center;
 }
@@ -98,6 +104,30 @@ input:focus {
 }
 .main-nav ul li a:hover {
 	color: #3be8b0;
+}
+.drop-menu {
+    background: white;
+    box-shadow: 0px 3px 9px rgb(0 0 0 / 15%);
+    border-radius: 3px;
+    height: fit-content;
+    width: fit-content;
+    padding: 20px;
+    z-index: 9;
+    transform: translate(-80%, 10px);
+    left: right;
+    position: absolute;
+    display: none;
+}
+.drop-menu ul {
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+}
+.drop-menu ul li{
+    padding: 10px;
+}
+.display-on {
+    display: block;
 }
 .login {
 	border: 1px solid #3be8b0;
@@ -335,11 +365,24 @@ input:focus {
     right: 30px;
     bottom: 15px;
 }
+.dashboard-container .notes h2 {
+    text-align: center;
+    font-family: system-ui;
+    padding: 15px 0;
+    font-weight: 400;
+    color: #4c4c4c;
+    text-transform: uppercase;
+}
 .dashboard-container .notes .single-note {
     box-shadow: 0 5px 10px rgb(0 0 0 / 10%);
     padding: 30px;
     border-radius: 4px;
     margin-bottom: 15px;
+}
+.dashboard-container .notes .single-note .book-cover {
+    object-fit: cover;
+    height: 200px;
+    border-radius: 5px;
 }
 .dashboard-container .notes .single-note span {
     font-family: system-ui;
