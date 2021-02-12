@@ -43,10 +43,7 @@
 			<!-- Single Note -->
 			@foreach($books as $book)
 			<div class="single-note">
-				<div class="">
-					<form class="display-flex" action="{{ route('patvirtinti-knyga', $book->id) }}" method="POST">
-						@csrf 
-						@method('PUT')
+				<div class="display-flex">
 						<img class="book-cover" src="img/1.jpg">
 					<div class="display-flex flex-column padding-30">              
 						<span class="single-note-text">
@@ -65,9 +62,13 @@
 							@if($book->approved === 1)
 							<button type="" class="single-note-look-btn turn-off">Išjungti </button>
 							@else
+							<form action="{{ route('patvirtinti-knyga', $book->id) }}" method="POST">
+							@csrf 
+							@method('PUT')
 							<button type="submit" class="single-note-look-btn">Patvirtinti </button>
+							</form>
 							@endif
-							<a href="" class="single-note-look-btn">Redagouti </a>
+							<a href="{{ route('redaguoti-knyga', $book->id) }}" class="single-note-look-btn">Redagouti </a>
 						</div>
 					</div>
 				</div>

@@ -37,15 +37,18 @@
 		</div>
 
 		<div class="post-book">
-			<form action="{{ route('ideti') }}" method="POST" enctype="multipart/form-data">
+			<form action="{{ isset($book) ? route('atnaujinti-knyga', $book) : route('ideti') }}" method="POST" enctype="multipart/form-data">
             @csrf
+			@if($book)
+			@method('PUT')
+			@endif
 			  <div class="form-group">
 			    <label for="exampleFormControlInput1">Knygos pavadinimas</label>
-			    <input type="text" name="title" class="form-control" placeholder="">
+			    <input type="text" name="title" class="form-control" placeholder="" value="{{ ($book) ? $book->title : '' }}">
 			  </div>
 			  <div class="form-group">
 			    <label for="exampleFormControlInput1">Autorius</label>
-			    <input type="text" name="author" class="form-control" placeholder="">
+			    <input type="text" name="author" class="form-control" placeholder="" value="{{ ($book) ? $book->author : '' }}">
 			  </div>
 			  <div class="form-group">
 			    <label for="exampleFormControlSelect1">Žanras</label>
@@ -57,15 +60,22 @@
 			  </div>
 			   <div class="form-group">
 			    <label for="exampleFormControlInput1">Kaina</label>
-			    <input type="text" name="price" class="form-control" placeholder="">
+			    <input type="text" name="price" class="form-control" placeholder="" value="{{ ($book) ? $book->price : '' }}">
 			  </div>
+			  @if(($book))
+			  <div class="form-group">
+			    <label for="exampleFormControlInput1">Nuolaida</label>
+			    <input type="text" name="discount" class="form-control" placeholder="" value="{{ isset($book) ? $book->discount : '' }}">
+			  </div>
+			  @endif
 			  <div class="form-group">
 			    <label for="exampleFormControlFile1">Viršelio nuotrauka</label>
 			    <input name="cover_img" type="file" class="form-control-file" id="cover_img">
+				<img src="{{ ($book) ? $book->cover_img : '' }}">
 			  </div>
 			  <div class="form-group">
 			    <label for="exampleFormControlTextarea1">Aprašymas</label>
-			    <textarea class="form-control" name="description" rows="3"></textarea>
+			    <textarea class="form-control" name="description" rows="3">{{ ($book) ? $book->description : '' }}</textarea>
 			  </div>
 			  <div class="form-group">
 			    <button type="submit" class="btn-post-book">Išsaugoti</button>

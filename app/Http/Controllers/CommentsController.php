@@ -39,6 +39,7 @@ class CommentsController extends Controller
         $commentInsert = Comment::create([
             'user_id' => auth()->user()->id,
             'book_id' => $request->book_id,
+            'rating' => $request->rating,
             'comment' => $request->comment
         ]);
 

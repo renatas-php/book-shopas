@@ -27,7 +27,8 @@ class BooksController extends Controller
      */
     public function create()
     {
-        return view('knygos.ideti');
+        $book = '';
+        return view('knygos.ideti')->with(compact('book'));
     }
 
     /**
@@ -74,9 +75,9 @@ class BooksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Book $book)
     {
-        //
+        return view('knygos.ideti')->with(compact('book'));
     }
 
     /**
@@ -86,9 +87,24 @@ class BooksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Book $book)
     {
-        //
+
+        $data = $request->only(['title', 'author', 'genre', 'price',
+         'cover_img', 'discount', 'description']);
+        
+        if($request->file('cover_img')){
+        
+            $file = $request->file('cover_img')->store('covers');           
+
+            $data['cover_img'] = $file;
+        }                
+        
+        $book->update($data);
+
+        session()->flash('ok', 'Informacija apie knygą atnaujinta');
+
+        return redirect()->route('valdymo-panele');
     }
 
     /**

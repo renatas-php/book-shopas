@@ -19,6 +19,10 @@ use App\Http\Controllers\CommentsController;
 Route::get('/', [BooksController::class, 'index'])->name('index');
 
 Route::get('/ideti-knyga', [BooksController::class, 'create'])->name('ideti-knyga');
+Route::get('/ideti-knyga/{book}', [BooksController::class, 'edit'])->name('redaguoti-knyga');
+Route::put('/ideti-knyga/{book}/atnaujinti', [BooksController::class, 'update'])->name('atnaujinti-knyga');
+
+
 Route::get('/knyga/{book}', [BooksController::class, 'show'])->name('knyga');
 Route::post('/', [BooksController::class, 'store'])->name('ideti');
 Route::put('patvirtinti/{id}', [BooksController::class, 'approve'])->name('patvirtinti-knyga');
