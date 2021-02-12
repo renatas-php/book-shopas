@@ -29,12 +29,12 @@
 		<div class="elements">
 			<div class="some-element">
 				<h2>Aktyvių knygų</h2>
-				<p>2</p>
+				<p>{{ $bookObject->countBooks(true) }}</p>
 			</div>
 
 			<div class="some-element">
 				<h2>Nepatvirtintos knygos</h2>
-				<p>2</p>
+				<p>{{ $bookObject->countBooks(false) }}</p>
 			</div>
 		</div>
 		</div>
@@ -50,20 +50,24 @@
 						<img class="book-cover" src="img/1.jpg">
 					<div class="display-flex flex-column padding-30">              
 						<span class="single-note-text">
-						<strong>Knygos pavadinimas:</strong> {{ $book->title }}
+						Knygos pavadinimas: <strong> {{ $book->title }} </strong>
 						</span>
 						<span class="single-note-text">
-						<strong>Įkėlė:</strong> {{ $book->user->email }}
+						Įkėlė: <strong>{{ $book->user->email }} </strong>
 						</span>
 						<span class="single-note-text">
-						<strong>Kaina:</strong> 200.00 Eur
+						Kaina: <strong> 200.00 Eur </strong>
 						</span>
 						<span class="single-note-text">
-						<strong>Įkėlimo data:</strong> 2012-10-12
+						Įkėlimo data: <strong> 2012-10-12</strong>
 						</span>
 						<div class="single-note-actions">
+							@if($book->approved === 1)
+							<button type="" class="single-note-look-btn turn-off">Išjungti </button>
+							@else
 							<button type="submit" class="single-note-look-btn">Patvirtinti </button>
-							<a href="" class="single-note-look-btn">Atmesti </a>
+							@endif
+							<a href="" class="single-note-look-btn">Redagouti </a>
 						</div>
 					</div>
 				</div>

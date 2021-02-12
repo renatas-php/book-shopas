@@ -33,6 +33,7 @@ class HomeController extends Controller
         }
         else {
             return view('admin.dashboard')
+            ->with('bookObject', new Book())
             ->with('books', Book::where('approved', 0)->get());
         }
         

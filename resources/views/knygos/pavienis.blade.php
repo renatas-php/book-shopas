@@ -24,6 +24,7 @@
 			<button class="btn-search">Ieškoti</button>
 		</div>		
 	</div>
+<div>
 	<div class="book-single">
 		<div class="book-cover">
 			<img src="{{ asset($book->cover_img) }}">
@@ -45,6 +46,28 @@
 				{{ $book->description }}
 			</div>
 			<a href="{{ route('pranesimas', $book->id) }}" class="report-book">Pranešti apie knygą!</a>
+		</div>
+	</div>
+
+		<div class="comment-section">
+		<h1 class="title">Komentarai</h1>
+		@foreach($comments as $comment)
+		<div class="comment">
+			<div class="comment-author">
+				<img src="{{ asset('img/1.jpg') }}">
+				<h2>{{ $comment->user->email }}</h2>
+			</div>
+			<div class="actual-comment">
+			<p>{{ $comment->comment }}<span>{{ $comment->created_at }}</span></p>
+			</div>
+		</div>
+		@endforeach
+		<form class="comments" action="{{ route('komentuoti') }}" method="POST" id="comment">
+		@csrf
+		<textarea class="comment-area" name="comment"></textarea>
+		<input type="hidden" name="book_id"  value="{{ $book->id }}">
+		<button class="comment-btn" form="comment">Komentuoti</button>
+		</form>
 		</div>
 		
 	</div>

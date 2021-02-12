@@ -26,6 +26,11 @@ class Book extends Model
             return true;
         }
     }
+    public function countBooks($whatCheck) {
+        $books = Book::where('approved', $whatCheck)->get();
+        $number = $books->count();
+        return $number;
+    }
 
     public function user() {
         return $this->belongsTo(User::class);

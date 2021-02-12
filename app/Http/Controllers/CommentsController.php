@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\File;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
-use App\Models\Book;
+
 use App\Models\Comment;
 
-class BooksController extends Controller
+class CommentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,8 @@ class BooksController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {     
-        return view('index');
+    {
+        //
     }
 
     /**
@@ -27,7 +25,7 @@ class BooksController extends Controller
      */
     public function create()
     {
-        return view('knygos.ideti');
+        //
     }
 
     /**
@@ -37,22 +35,14 @@ class BooksController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
-
-        $file = $request->file('cover_img')->store('covers');
-
-        $bookInsert = Book::create([
+    {
+        $commentInsert = Comment::create([
             'user_id' => auth()->user()->id,
-            'title' => $request->title,
-            'author' => $request->author,
-            'genre' => $request->genre,
-            'price' => $request->price,
-            'cover_img' => $file,
-            'description' => $request->description,
-            'approved' => false
+            'book_id' => $request->book_id,
+            'comment' => $request->comment
         ]);
 
-        return view('index')->with('ok', 'Knygos pasiūlymas įkeltas');
+        return redirect()->back()->with('ok', 'Komentaras patalpintas');
     }
 
     /**
@@ -61,11 +51,9 @@ class BooksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Book $book)
-    {   
-        $comments = Comment::where('book_id', $book->id)->get();
-        return view('knygos.pavienis')->with(compact('book'))
-        ->with('comments', $comments);
+    public function show($id)
+    {
+        //
     }
 
     /**
@@ -100,15 +88,5 @@ class BooksController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function approve($id) {
-
-        $approveBook = Book::where('id', $id);
-
-        $data['approved'] = true;             
-        $approveBook->update($data);
-
-        return redirect()->back();
     }
 }

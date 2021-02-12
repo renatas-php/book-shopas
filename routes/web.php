@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\ReportsController;
+use App\Http\Controllers\CommentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +31,7 @@ Route::get('/pranesimas/{book}', [ReportsController::class, 'create'])->name('pr
 Route::post('pranesti', [ReportsController::class, 'store'])->name('pranesti');
 Route::get('/pranesimai', [ReportsController::class, 'index'])->name('pranesimai');
 
-
-
+Route::post('komentuoti', [CommentsController::class, 'store'])->name('komentuoti');
 
 Auth::routes();
 
