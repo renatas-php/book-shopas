@@ -11,15 +11,11 @@ class Book extends Model
 {
     use HasFactory;
 
-    protected $casts = [
-        'genre' => 'array'
-    ];
+    public function getRouteKeyName() {
+        return 'slug';
+    }
 
-    protected $fillable = ['user_id', 'title', 'author', 'genre', 
-    'price', 'cover_img', 'discount', 'approved', 'description'];
-
-    public $genres = ['Drama', 'Karinis', 'Siaubo', 'Fantastinis', 
-        'Dokumentinis', 'Detektyvas', 'Biografija', 'Nuotykių'];
+    protected $fillable = ['user_id', 'title', 'price', 'cover_img', 'discount', 'approved', 'description', 'slug'];
 
     public function lastWeek($bookDate) {
         if( $bookDate > Carbon::now()->startOfWeek() && $bookDate < Carbon::now()->endOfWeek()){
@@ -37,5 +33,11 @@ class Book extends Model
     }
     public function reports() {
         return $this->hasMany(Report::class);
+    }
+    public function genres() {
+        return $this->belongsToMany(Genre::class);
+    }
+    Public function authors() {
+        return $this->belongsToMany(Author::class);
     }
 }

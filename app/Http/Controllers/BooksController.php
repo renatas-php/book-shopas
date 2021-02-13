@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Comment;
+use App\Models\Author;
+use App\Models\Genre;
 
 class BooksController extends Controller
 {
@@ -26,9 +28,8 @@ class BooksController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        $book = '';
-        return view('knygos.ideti')->with(compact('book'));
+    {   
+        return view('knygos.ideti')->with('authors', Author::all())->with('genres', Genre::all());
     }
 
     /**
@@ -39,21 +40,28 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {   
+        $slug = str_replace(' ', '-', $request->title);
 
         $file = $request->file('cover_img')->store('covers');
 
         $bookInsert = Book::create([
             'user_id' => auth()->user()->id,
             'title' => $request->title,
-            'author' => $request->author,
-            'genre' => $request->genre,
             'price' => $request->price,
             'cover_img' => $file,
             'description' => $request->description,
-            'approved' => false
+            'approved' => false,
+            'slug' => $slug
         ]);
 
-        return view('index')->with('ok', 'Knygos pasiūlymas įkeltas');
+        if($request->genre) {
+            $bookInsert->genres()->attach($request->genre);
+        }
+        if($request->author) {
+            $bookInsert->authors()->attach($request->author);
+        }
+
+        return redirect()->route('index')->with('ok', 'Knygos pasiūlymas įkeltas');
     }
 
     /**

@@ -33,14 +33,17 @@
 			<div class="main-info">
 				<h1 class="title">{{ $book->title }}</h1>
 				<div class="author-rating">
-					<h2 class="author">{{ $book->author }}</h2>
+				@foreach($book->authors as $author)				
+				<h2 class="author">{{ $author->name }}</h2>				
+				@endforeach					
 					<div class="rating"></div>
 				</div>
+				@foreach( $book->genres as $genre )
 				<p class="genre">
-                @foreach( $book->genre as $gen )
-                {{ $gen }}
+                {{ $genre->name }}
+				</p>
                 @endforeach
-                </p>
+                
 			</div>
 			<div class="description">
 				{{ $book->description }}

@@ -32,17 +32,21 @@
         @foreach($books as $book)
 		
 		<div class="book-item">
-		<a href="{{ route('knyga', $book->id) }}">
+		<a href="{{ route('knyga', $book->slug) }}">
 			@if($book->lastWeek($book->created_at))
 			<span class="this-week">Šios savaitės</span>
 			@endif
 			<img class="main-img" src="{{ asset($book->cover_img) }}">
 			<div class="description">
 				<h1 class="title">{{ $book->title }}</h1>
-				<p class="author">{{ $book->author }}</p>
+				@foreach($book->authors as $author)
+				<p class="author">				
+				{{ $author->name }}				
+				</p>
+				@endforeach
 				<p class="price">{{ $book->price }}.00 Eur</p>
 				<div class="button-section">
-				<a href="{{ route('knyga', $book->id) }}" class="button-look">Plačiau</a>
+				<a href="" class="button-look">Plačiau</a>
 				</div>
 			</div>
 		</a>
