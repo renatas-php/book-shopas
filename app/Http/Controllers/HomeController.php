@@ -49,6 +49,8 @@ class HomeController extends Controller
     public function store(Request $request) {
         auth()->user()->update([
             'email' => $request->email,
+            'years' => $request->years,
+            'month' => $request->month,
             'password' => Hash::make($request->password)
         ]);
         
@@ -59,6 +61,13 @@ class HomeController extends Controller
         else {
             return view('admin.dashboard')->with('user', $user);
         }
+
+    }
+
+    public function books() {
+        
+        return view('vartotojas.knygos')
+        ->with('myBooks', Book::where('user_id', auth()->user()->id)->where('approved', false)->get());
 
     }
 }

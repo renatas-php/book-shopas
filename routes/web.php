@@ -33,6 +33,8 @@ Route::put('patvirtinti/{id}', [BooksController::class, 'approve'])->name('patvi
 Route::get('valdymo-panele', [App\Http\Controllers\HomeController::class, 'index'])->name('valdymo-panele');
 Route::get('mano-profilis/{user}', [App\Http\Controllers\HomeController::class, 'edit'])->name('mano-profilis');
 Route::put('mano-profilis/{user}', [App\Http\Controllers\HomeController::class, 'store'])->name('profilis-atnaujinti');
+Route::get('mano-knygos', [App\Http\Controllers\HomeController::class, 'books'])->name('mano-knygos');
+
 
 //Route::resources([
 //    'pranesimai' => ReportsController::class,

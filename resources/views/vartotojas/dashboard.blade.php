@@ -27,10 +27,12 @@
             </div>
         </div>
 		<div class="elements">
-			<div class="some-element">
+		<a class="some-element" href="{{ route('mano-knygos') }}">
+			<div class="">
 				<h2>Pasiūlyta knygų</h2>
 				<p>2</p>
 			</div>
+		</a>
 
 			<div class="some-element">
 				<h2>Patvirtintos knygos</h2>
@@ -41,48 +43,17 @@
 		<div class="notes">
 			<h2>Pranešimai</h2>
 			<!-- Single Note -->
+			@foreach($userUnreadNotes as $note)
 			<div class="single-note">                  
                   <span class="single-note-text">
-                    Jūsų pasiūlyta knyga <a href="#">Karo Menas</a> patvirtinta ir nuo šiol yra listinguojama saraše!
+                    Jūsų pasiūlyta knyga <a href="{{ route('knyga', auth()->user()->bookByIdForNotifications($note->data['book_id'])->slug) }}">{{ auth()->user()->bookByIdForNotifications($note->data['book_id'])->title }}</a> <strong>Patvirtinta </strong>
                   </span>
                   <!-- Buttons -->
                   <div class="single-note-actions">
-                   <a href="" class="single-note-look-btn">Peržiūrėti </a>
+                   <a href="{{ route('knyga', auth()->user()->bookByIdForNotifications($note->data['book_id'])->slug) }}" class="single-note-look-btn">Peržiūrėti </a>
                   </div>                  
 			</div>
-			<!-- Single Note End -->
-			<!-- Single Note -->
-			<div class="single-note">                  
-                  <span class="single-note-text">
-                    Jūsų pasiūlyta knyga <a href="#">Karo Menas</a> <strong>Patvirtinta </strong>
-                  </span>
-                  <!-- Buttons -->
-                  <div class="single-note-actions">
-                   <a href="" class="single-note-look-btn">Peržiūrėti </a>
-                  </div>                  
-			</div>
-			<!-- Single Note End -->
-			<!-- Single Note -->
-			<div class="single-note">                  
-                  <span class="single-note-text">
-                    Jūsų pasiūlyta knyga <a href="#">Karo Menas</a> <strong>Patvirtinta </strong>
-                  </span>
-                  <!-- Buttons -->
-                  <div class="single-note-actions">
-                   <a href="" class="single-note-look-btn">Peržiūrėti </a>
-                  </div>                  
-			</div>
-			<!-- Single Note End -->
-			<!-- Single Note -->
-			<div class="single-note">                  
-                  <span class="single-note-text">
-                    Jūsų pasiūlyta knyga <a href="#">Karo Menas</a> <strong>Patvirtinta </strong>
-                  </span>
-                  <!-- Buttons -->
-                  <div class="single-note-actions">
-                   <a href="" class="single-note-look-btn">Peržiūrėti </a>
-                  </div>                  
-			</div>
+			@endforeach
 			<!-- Single Note End -->
 		</div>		
 	</div>

@@ -6,11 +6,15 @@ use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Http\Requests\BookCreateRequest;
+use App\Notifications\BookApproved;
+
 
 use App\Models\Book;
 use App\Models\Comment;
 use App\Models\Author;
 use App\Models\Genre;
+use App\Models\User;
+
 
 class BooksController extends Controller
 {
@@ -148,6 +152,12 @@ class BooksController extends Controller
 
         $data['approved'] = true;             
         $approveBook->update($data);
+
+        $user_id = Book::where('id', $id)->pluck('user_id');
+        //dd($user_id);
+        $book_id = $id;
+        $user = User::where('id', $user_id)->first();
+        $user->notify(new BookApproved($book_id, $user_id));
 
         return redirect()->back();
     }

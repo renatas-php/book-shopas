@@ -15,10 +15,6 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
 
 
-
-
-
-
 <div class="container">
 	<div class="main-nav">
 		<ul class="">
@@ -32,40 +28,44 @@
 	</div>
 	<div class="dashboard-container">
 		<div class="dashboard-top">
-			<h1 class="title">Jūsų profilio informacija, Renatai!</h1>
+			<h1 class="title">Jūsų profilio informacija, {{ $user->email }}</h1>
 			<p class="sub-title">Čia galite atnaujinti savo profilio informaciją.</p>		
 		</div>
 
 		<div class="post-book">
-			<form action="{{ route('ideti') }}" method="POST" enctype="multipart/form-data">
+			<form action="{{ route('profilis-atnaujinti', auth()->user()->id) }}" method="POST">
             @csrf
+            @method('PUT')
 			  <div class="form-group">
-			    <label for="exampleFormControlInput1">Knygos pavadinimas</label>
-			    <input type="text" name="title" class="form-control" placeholder="">
+			    <label for="exampleFormControlInput1">Jūsų el. paštas</label>
+			    <input type="text" name="email" class="form-control" value="{{ $user->email }}">
 			  </div>
-			  <div class="form-group">
-			    <label for="exampleFormControlInput1">Autorius</label>
-			    <input type="text" name="author" class="form-control" placeholder="">
+			  <div class="display-flex justify-space-btw">
+					<div class="form-group flex-49">
+						<label for="exampleFormControlInput1">Gimimo metai</label>
+						<input type="text" name="years" class="form-control" value="{{ $user->years }}">
+					</div>
+					<div class="form-group flex-49">
+						<label for="exampleFormControlSelect1">Mėnuo</label>
+						<select name="month" class="form-control">
+						@foreach($months as $month)										 
+						<option value="{{ $month }}"
+						@if ($user->month == $month )
+						selected
+						@endif
+						>{{ $month }}</option>
+						@endforeach	    
+						</select>
+					</div>
 			  </div>
-			  <div class="form-group">
-			    <label for="exampleFormControlSelect1">Žanras</label>
-			    <select name="genre[]" class="form-control" id="exampleFormControlSelect1" multiple>
-				 
-			      <option></option>
-			    
-			    </select>
-			  </div>
+
 			   <div class="form-group">
-			    <label for="exampleFormControlInput1">Kaina</label>
-			    <input type="text" name="price" class="form-control" placeholder="">
+			    <label for="exampleFormControlInput1">Senas Slaptažodis</label>
+			    <input type="password" class="form-control" value="{{ $user->password }}" readonly>
 			  </div>
 			  <div class="form-group">
-			    <label for="exampleFormControlFile1">Viršelio nuotrauka</label>
-			    <input name="cover_img" type="file" class="form-control-file" id="cover_img">
-			  </div>
-			  <div class="form-group">
-			    <label for="exampleFormControlTextarea1">Aprašymas</label>
-			    <textarea class="form-control" name="description" rows="3"></textarea>
+			    <label for="exampleFormControlInput1">Naujas Slaptažodis</label>
+			    <input type="password" name="password" value="" class="form-control">
 			  </div>
 			  <div class="form-group">
 			    <button type="submit" class="btn-post-book">Išsaugoti</button>

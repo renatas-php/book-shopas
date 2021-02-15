@@ -31,7 +31,7 @@
 	</div>
 	<div class="books-container">
 		@if(session('ok'))
-		<h1 class="books-zero">Jūsų knygos pasiūlymas įkeltas</h1>
+		<h1 class="books-zero">{{ session('message') }}</h1>
 		@endif
 		@if($books->count() < 1)
 		<h1 class="books-zero">Knygų nerasta!</h1>

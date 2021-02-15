@@ -74,12 +74,7 @@
 			    <label for="exampleFormControlInput1">Kaina</label>
 			    <input type="text" name="price" class="form-control" placeholder="" value="{{ isset($book) ? $book->price : '' }}">
 			  </div>
-			  @if(isset($book))
-			  <div class="form-group">
-			    <label for="exampleFormControlInput1">Nuolaida</label>
-			    <input type="text" name="discount" class="form-control" placeholder="" value="{{ isset($book) ? $book->discount : '' }}">
-			  </div>
-			  @endif
+
 			  <div class="form-group">
 			    <label for="exampleFormControlFile1">Viršelio nuotrauka</label>
 			    <input name="cover_img" type="file" class="form-control-file" id="cover_img">

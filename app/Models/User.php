@@ -51,4 +51,10 @@ class User extends Authenticatable
     public function comments() {
         return $this->hasMany(Comment::class);
     }
+    public function bookByIdForNotifications($id) {
+        $books = Book::where('id', $id)->get();
+        foreach($books as $book){
+            return $book;
+        }
+    }
 }

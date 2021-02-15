@@ -43,12 +43,18 @@
 			  <div class="display-flex justify-space-btw">
 					<div class="form-group flex-49">
 						<label for="exampleFormControlInput1">Gimimo metai</label>
-						<input type="text" name="years" class="form-control" value="{{ $user->years }}" readonly>
+						<input type="text" name="years" class="form-control" value="{{ $user->years }}" >
 					</div>
 					<div class="form-group flex-49">
 						<label for="exampleFormControlSelect1">Mėnuo</label>
-						<select name="month" class="form-control" readonly>				 
-						<option>{{ $user->month }}</option>			    
+						<select name="month" class="form-control" >				 
+						@foreach($months as $month)										 
+						<option value="{{ $month }}"
+						@if ($user->month == $month )
+						selected
+						@endif
+						>{{ $month }}</option>
+						@endforeach				    
 						</select>
 					</div>
 			  </div>
