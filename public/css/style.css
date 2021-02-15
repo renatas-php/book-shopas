@@ -3,6 +3,13 @@
 	margin: 0;
 	box-sizing: border-box;
 }
+.books-zero {
+    text-align: center;
+    width: 100%;
+    font-family: system-ui;
+    color: #afafaf;
+    font-weight: 200;
+}
 .flex-49 {
     flex: 0 0 49%;
 }
@@ -67,9 +74,13 @@ input:focus {
     border-radius: 25px;
     position: absolute;
     right: 6px;
+    cursor: pointer;
     top: 6px;
     color: #fff;
     letter-spacing: 1px;
+}
+.search-box .search-input .btn-search:hover {
+    background: #afafaf;
 }
 .search-box h3{
 	font-size: 15px;

@@ -35,7 +35,15 @@
 			<h1 class="title">Labas, Renatai!</h1>
 			<p class="sub-title">Turite nereikalingų knygų, parduokite jas čia.</p>		
 		</div>
-
+			@if ($errors->any())
+				<div class="alert alert-danger">
+					<ul>
+				@foreach ($errors->all() as $error)
+					<li>{{ $error }}</li>
+				@endforeach
+					</ul>
+				</div>
+			@endif
 		<div class="post-book">
 			<form action="{{ isset($book) ? route('atnaujinti-knyga', $book) : route('ideti') }}" method="POST" enctype="multipart/form-data">
             @csrf

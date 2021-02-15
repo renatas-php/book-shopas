@@ -18,6 +18,9 @@ use App\Http\Controllers\CommentsController;
 
 Route::get('/', [BooksController::class, 'index'])->name('index');
 
+//Route::get('paieska', [BooksController::class, 'search'])->name('paieska');
+
+
 Route::get('/ideti-knyga', [BooksController::class, 'create'])->name('ideti-knyga');
 Route::get('/ideti-knyga/{book}', [BooksController::class, 'edit'])->name('redaguoti-knyga');
 Route::put('/ideti-knyga/{book}/atnaujinti', [BooksController::class, 'update'])->name('atnaujinti-knyga');
@@ -31,6 +34,9 @@ Route::get('valdymo-panele', [App\Http\Controllers\HomeController::class, 'index
 Route::get('mano-profilis/{user}', [App\Http\Controllers\HomeController::class, 'edit'])->name('mano-profilis');
 Route::put('mano-profilis/{user}', [App\Http\Controllers\HomeController::class, 'store'])->name('profilis-atnaujinti');
 
+//Route::resources([
+//    'pranesimai' => ReportsController::class,
+//    ]);
 Route::get('/pranesimas/{book}', [ReportsController::class, 'create'])->name('pranesimas');
 Route::post('pranesti', [ReportsController::class, 'store'])->name('pranesti');
 Route::get('/pranesimai', [ReportsController::class, 'index'])->name('pranesimai');

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use App\Http\Requests\BookCreateRequest;
+
 use App\Models\Book;
 use App\Models\Comment;
 use App\Models\Author;
@@ -19,7 +21,18 @@ class BooksController extends Controller
      */
     public function index()
     {     
-        return view('index');
+        $books = new Book();
+        if(request()->filled('title')){
+            $books = Book::where('title', 'like', request('title'));
+                   
+        }
+
+        $books = $books->orderBy('created_at', 'desc')->paginate(25)->appends([
+            'title' => request('title')
+        ]);
+        
+        return view('index')
+        ->with('books', $books);
     }
 
     /**
@@ -38,12 +51,15 @@ class BooksController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BookCreateRequest $request)
     {   
         $slug = str_replace(' ', '-', $request->title);
 
+        $file = 'default_cover.jpg';
+        if($request->file('cover_img')){
         $file = $request->file('cover_img')->store('covers');
-
+        }
+        
         $bookInsert = Book::create([
             'user_id' => auth()->user()->id,
             'title' => $request->title,
@@ -135,4 +151,5 @@ class BooksController extends Controller
 
         return redirect()->back();
     }
+
 }

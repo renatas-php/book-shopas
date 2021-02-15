@@ -21,16 +21,23 @@
 			<span>Thousands of small businesses use <strong class="color">Hireo</strong> to turn their ideas into reality.</span>
 		</h3>
 		<div class="search-input">
-			<input id="autocomplete-input" type="text" placeholder="Paieška">
-			<button class="btn-search">Ieškoti</button>
+		<form action="{{ route('index') }}" method="GET">
+			<input id="autocomplete-input" type="text" name="title" placeholder="Paieška">
+			<button type="submit" class="btn-search">Ieškoti</button>
+		</form>
 		</div>		
 	</div>
 	<a href="{{ route('ideti-knyga') }}" class="post-book">Pasiūlyti knygą</a>
 	</div>
 	<div class="books-container">
-		<!-- Book Item -->
+		@if(session('ok'))
+		<h1 class="books-zero">Jūsų knygos pasiūlymas įkeltas</h1>
+		@endif
+		@if($books->count() < 1)
+		<h1 class="books-zero">Knygų nerasta!</h1>
+		@else
         @foreach($books as $book)
-		
+		<!-- Book Item -->		
 		<div class="book-item">
 		<a href="{{ route('knyga', $book->slug) }}">
 			@if($book->lastWeek($book->created_at))
@@ -52,6 +59,7 @@
 		</a>
 		</div>
         @endforeach
+		@endif
 		<!-- Book Item End -->
 	</div>
 </div>

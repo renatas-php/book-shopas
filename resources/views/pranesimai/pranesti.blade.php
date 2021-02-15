@@ -31,11 +31,11 @@
 		</div>
 
 		<div class="post-book">
-			<form action="{{ route('pranesti', $book->id) }}" method="POST">
+			<form action="{{ route('pranesti', $book->slug) }}" method="POST">
             @csrf
 			  <div class="form-group">
 			    <label for="exampleFormControlInput1">Knygos pavadinimas</label>
-			    <a href="{{ route('knyga', $book->id) }}">{{ $book->title }}</a>
+			    <a href="">{{ $book->title }}</a>
 			  </div>
 			  <div class="form-group">
 			    <label for="exampleFormControlInput1">Netinkamumo priežastis</label>
