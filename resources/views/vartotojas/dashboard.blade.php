@@ -11,10 +11,9 @@
 <!-- CSS
 ================================================== -->
 @include('includes.css')
-
+@include('partials.topnav')
 
 <div class="container">
-	@include('partials.topnav')
 	<div class="dashboard-container">
 		<div class="dashboard-top">
         <div class="display-flex align-items-center justify-space-btw">
