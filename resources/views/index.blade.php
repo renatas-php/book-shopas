@@ -11,8 +11,8 @@
 <!-- CSS
 ================================================== -->
 @include('includes.css')
+@include('partials.topnav')
 <div class="container">
-	@include('partials.topnav')
 	<div class="top-box">
 	<div class="search-box">
 		<h3>

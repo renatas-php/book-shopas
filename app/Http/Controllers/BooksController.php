@@ -27,14 +27,12 @@ class BooksController extends Controller
     {     
         $books = new Book();
         if(request()->filled('title')){
-            $books = Book::where('title', 'like', request('title'));
-                   
+            $books = Book::where('title', 'like', '%' . request('title') . '%')
+            ->orWhere('description', 'like', '%' . request('title') . '%');                   
         }
-
-        $books = $books->orderBy('created_at', 'desc')->paginate(25)->appends([
+        $books = $books->orderBy('created_at', 'desc')->where('approved', true)->paginate(25)->appends([
             'title' => request('title')
         ]);
-        
         return view('index')
         ->with('books', $books);
     }

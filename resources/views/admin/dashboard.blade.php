@@ -7,14 +7,23 @@
 <title>Hireo</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
 <!-- CSS
 ================================================== -->
-@include('includes.css')
 
+@include('includes.css')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+@include('partials.topnav')
+
+
+
+</head>
+
+<body>
 
 <div class="container">
-	@include('partials.topnav')
+	
 	<div class="dashboard-container">
 		<div class="dashboard-top">
         <div class="display-flex align-items-center justify-space-btw">
@@ -62,10 +71,10 @@
 							@if($book->approved === 1)
 							<button type="" class="single-note-look-btn turn-off">Išjungti </button>
 							@else
-							<form action="{{ route('patvirtinti-knyga', $book->id) }}" method="POST">
+							<form class="approve" action="{{ route('patvirtinti-knyga', $book->id) }}" method="POST" book="{{ $book->id }}">
 							@csrf 
 							@method('PUT')
-							<button type="submit" class="single-note-look-btn">Patvirtinti </button>
+							<button type="submit" class="approve-button">Patvirtinti </button>
 							</form>
 							@endif
 							<a href="{{ route('redaguoti-knyga', $book->id) }}" class="single-note-look-btn">Redagouti </a>
@@ -80,9 +89,45 @@
 	</div>
 </div>
 
-</head>
-<body>
+<script>
 
+$(document).ready(function() {
+	$('.approve-button').on("click", function() {
+		$(this).hide();
+	}); 
+
+		$('.approve').on("submit", function(e) {
+			e.preventDefault();    
+
+			let book = $(this).attr('book');        
+			console.log(book);
+
+			$.ajaxSetup({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				}
+			});
+
+			$.ajax({
+
+				url: "patvirtinti/" + book,
+				method: 'PUT',
+				data: {
+					book:book
+				},
+				success: function(response)
+					{    
+					console.log('kkkkk');
+					}
+
+			});
+       
+
+    	});
+})
+
+</script>
 
 </body>
+
 </html>

@@ -97,17 +97,40 @@ input:focus {
     border: 1px solid #bdbdbd;
 }
 .main-nav {
-	width: 60%;
-    margin: 0 0 0 auto;
+	box-shadow: 0 3px 9px rgb(0 0 0 / 7%);
 }
 .main-nav ul {
 	display: flex;
     justify-content: space-around;
     align-items: center;
     height: 60px;
+    margin: 0 0 0 auto;
+    width: 60%;
 }
 .main-nav ul li {
 	list-style: none;
+}
+.main-nav ul li i {
+    font-size: 20px;
+    color: #a5a4a4;
+    position: relative;
+}
+.main-nav ul li i:hover {
+    cursor: pointer;
+    color: #777;
+}
+.main-nav ul li i span {
+    font-size: 10px;
+    font-family: system-ui;
+    font-weight: 600;
+    background: #17195f;
+    color: #fff;
+    padding: 2px 5px;
+    line-height: 13px;
+    border-radius: 50%;
+    position: absolute;
+    top: -7px;
+    left: -5px;
 }
 .main-nav ul li a{
 	text-decoration: none;
@@ -132,11 +155,50 @@ input:focus {
     position: absolute;
     display: none;
 }
+.drop-menu-notes {
+    background: white;
+    box-shadow: 0px 3px 9px rgb(0 0 0 / 15%);
+    border-radius: 3px;
+    height: fit-content;
+    width: fit-content;
+    padding: 20px;
+    z-index: 9;
+    transform: translate(-80%, 10px);
+    left: right;
+    position: absolute;
+    display: none;
+}
+.drop-menu-notes .notifications {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.drop-menu-notes .notifications li {
+    padding: 15px 0;
+    width: 100%;
+}
+.drop-menu-notes .notifications li .note-title{
+    font-size: 16px;
+    font-family: system-ui;
+    color: #17195f;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+.drop-menu-notes .notifications li .note-paragraph{
+    font-size: 14px;
+    font-family: system-ui;
+    color: #ababab;
+}
 .drop-menu ul {
     flex-direction: column;
     justify-content: center;
     align-items: baseline;
     height: fit-content;
+    width: 100%;
+}
+.drop-menu .notifications {
+    width: 100%;
 }
 .drop-menu ul li{
     padding: 10px;
@@ -447,6 +509,16 @@ input:focus {
     color: white;
     text-decoration: none;
     padding: 5px 15px;
+    border-radius: 2px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 10%);
+    font-family: system-ui;
+}
+.dashboard-container .notes .single-note .single-note-actions .approve-button {
+    background: #777;
+    color: white;
+    text-decoration: none;
+    padding: 5px 15px;
+    margin: 0 0 10px 0;
     border-radius: 2px;
     box-shadow: 0 3px 10px rgb(0 0 0 / 10%);
     font-family: system-ui;

@@ -33,14 +33,16 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        View::composer(['vartotojas.dashboard'], function($view) {
-            $userUnreadNotes = User::where('id', auth()->user()->id)
+        View::composer(['vartotojas.dashboard', 'partials.notifications'], function($view) {
+            $user_id = auth()->user()->id;
+
+            $userUnreadNotes = User::where('id', $user_id)
             ->first()->unreadNotifications()
             ->where('type', 'App\Notifications\BookApproved')->get();
-
+    
             $view->with('userUnreadNotes', $userUnreadNotes);
         });
-
+        
         View::composer(['admin.dashboard'], function($view) {
             $view->with('books', Book::all());
         });
