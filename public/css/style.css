@@ -230,6 +230,27 @@ input:focus {
 	flex: 0 0 18%;
     margin: 1%;
     position: relative;
+    transition: all 0.1s ease-in-out;
+}
+.books-container .book-item:hover {
+    transform: translateY(-2px);
+}
+.book-single .book-cover {
+    position: relative;
+}
+.books-container .discount, .book-single .book-cover .discount {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    background: #323371;
+    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+    color: #fff;
+    padding: 6px;
+    font-size: 13px;
+    font-weight: 200;
+    font-family: system-ui;
 }
 .books-container .book-item .this-week {
 	text-decoration: none;
@@ -243,6 +264,7 @@ input:focus {
     top: 9px;
     left: 4px;
 }
+
 .books-container .book-item a {
 	text-decoration: none;
 }

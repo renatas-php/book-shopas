@@ -77,7 +77,7 @@
 							<button type="submit" class="approve-button">Patvirtinti </button>
 							</form>
 							@endif
-							<a href="{{ route('redaguoti-knyga', $book->id) }}" class="single-note-look-btn">Redagouti </a>
+							<a href="{{ route('redaguoti-knyga', $book->slug) }}" class="single-note-look-btn">Redagouti </a>
 						</div>
 					</div>
 				</div>

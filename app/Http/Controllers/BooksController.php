@@ -116,7 +116,7 @@ class BooksController extends Controller
     public function update(Request $request, Book $book)
     {
 
-        $data = $request->only(['title', 'author', 'genre', 'price',
+        $data = $request->only(['title', 'price',
          'cover_img', 'discount', 'description']);
         
         if($request->file('cover_img')){
@@ -124,7 +124,14 @@ class BooksController extends Controller
             $file = $request->file('cover_img')->store('covers');           
 
             $data['cover_img'] = $file;
-        }                
+        }
+        
+        if($request->genre) {
+            $bookInsert->genres()->attach($request->genre);
+        }
+        if($request->author) {
+            $bookInsert->authors()->attach($request->author);
+        }
         
         $book->update($data);
 

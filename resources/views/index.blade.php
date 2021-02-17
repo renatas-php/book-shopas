@@ -43,6 +43,9 @@
 			@if($book->lastWeek($book->created_at))
 			<span class="this-week">Šios savaitės</span>
 			@endif
+			@if($book->discount)
+			<span class="discount">{{ ($book->discount / $book->price) * 100 }}%</span>
+			@endif
 			<img class="main-img" src="{{ asset($book->cover_img) }}">
 			<div class="description">
 				<h1 class="title">{{ $book->title }}</h1>

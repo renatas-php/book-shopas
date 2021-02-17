@@ -11,8 +11,9 @@
 <!-- CSS
 ================================================== -->
 @include('includes.css')
+@include('partials.topnav')
 <div class="container">
-	@include('partials.topnav')
+	
 	<div class="search-box">
 		<h3>
 			<strong>Hire experts or be hired for any job, any time.</strong>
@@ -27,6 +28,9 @@
 <div>
 	<div class="book-single">
 		<div class="book-cover">
+			@if($book->discount)
+			<span class="discount">{{ ($book->discount / $book->price) * 100 }}%</span>
+			@endif
 			<img src="{{ asset($book->cover_img) }}">
 		</div>
 		<div class="book-info">

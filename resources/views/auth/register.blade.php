@@ -11,17 +11,8 @@
 <!-- CSS
 ================================================== -->
 @include('includes.css')
+@include('partials.topnav')
 <div class="container">
-	<div class="main-nav">
-		<ul class="">
-			<li><a href="" class="nav-link">Nuoroda</a></li>
-			<li><a href="" class="nav-link">Nuoroda</a></li>
-			<li><a href="" class="nav-link">Nuoroda</a></li>
-			<li><a href="" class="nav-link">Nuoroda</a></li>
-			<li><a href="" class="nav-link login">Prisijungti</a></li>
-		</ul>
-	</div>
-	
 	<div class="login-register">
 				<!-- Welcome Text -->
 				<div class="welcome-text">
