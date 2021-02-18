@@ -591,6 +591,9 @@ input:focus {
     padding: 40px 0 60px 0;
     flex-direction: column;
 }
+.comment-section .comment .user-rating i {
+    color: #ecc65a;
+}
 .comment-section .comment .comment-author {
     display: flex;
     align-items: center;
@@ -623,6 +626,15 @@ input:focus {
     height: fit-content;
     display: flex;
     flex-direction: column;
+}
+.comments .rating-div {
+    font-family: system-ui;
+    display: flex;
+    align-items: center;
+    color: #929292;
+    font-weight: 200;
+    font-size: 13px;
+    letter-spacing: 1px;
 }
 .comment-section h1{
     font-family: system-ui;
@@ -663,3 +675,39 @@ input:focus {
 .admin-actions .dashboard-btn:hover {
     background: #777;
 }
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+

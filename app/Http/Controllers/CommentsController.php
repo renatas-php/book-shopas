@@ -42,7 +42,7 @@ class CommentsController extends Controller
             'rating' => $request->rating,
             'comment' => $request->comment
         ]);
-
+        
         return redirect()->back()->with('ok', 'Komentaras patalpintas');
     }
 
