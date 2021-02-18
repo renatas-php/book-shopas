@@ -10,6 +10,7 @@
 
 <!-- CSS
 ================================================== -->
+
 @include('includes.css')
 @include('partials.topnav')
 <div class="container">
@@ -64,6 +65,10 @@
         @endforeach
 		@endif
 		<!-- Book Item End -->
+		
+	</div>
+	<div class="pagination-simple">
+	{{ $books->links() }}
 	</div>
 </div>
 
