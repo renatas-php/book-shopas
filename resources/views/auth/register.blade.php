@@ -16,7 +16,7 @@
 	<div class="login-register">
 				<!-- Welcome Text -->
 				<div class="welcome-text">
-					<h3>We're glad to see you again!</h3>
+					<h3>Susikurkite savo profilį!</h3>
 					<span>Neturite paskyros? <a href="pages-register.html">Prisijungti!</a></span>
 				</div>
 					
@@ -36,7 +36,11 @@
 						<i class=""></i>
 						<input type="text" class="" name="years" placeholder="Gimimo metai" required>
                         <select name="month" placeholder="Mėnuo">
-                            <option value="1">Sausis</option>
+                            <option >Sausis</option>
+							<option >Vasaris</option>
+							<option >Kovas</option>
+							<option >Balandis</option>
+							<option >Vasaris</option>
                         </select>			
 					</div>
 
@@ -59,13 +63,8 @@
 				<!-- Button -->
 				<button class="btn-reg-log" type="submit">Registruotis <i class="icon-material-outline-arrow-right-alt"></i></button>
 				</form>
-				<!-- Social Login -->
-				<div class="social-login-separator"><span>or</span></div>
-				<div class="social-login-buttons">
-					<button class="facebook-login ripple-effect"><i class="icon-brand-facebook-f"></i> Log In via Facebook</button>
-					<button class="google-login ripple-effect"><i class="icon-brand-google-plus-g"></i> Log In via Google+</button>
-				</div>
-			<img class="right-image" src="images/login.png">
+			
+			
 	</div>
 </div>
 

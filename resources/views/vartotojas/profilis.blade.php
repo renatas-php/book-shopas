@@ -14,18 +14,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
 
-
+@include('partials.topnav')
 <div class="container">
-	<div class="main-nav">
-		<ul class="">
-			<li><a href="" class="nav-link">Nuoroda</a></li>
-			<li><a href="" class="nav-link">Nuoroda</a></li>
-			<li><a href="" class="nav-link">Nuoroda</a></li>
-			<li><a href="" class="nav-link">Nuoroda</a></li>
-			<li><a href="" class="nav-link login">Prisijungti</a></li>
-			<li><a href="" class=""><i class="fas fa-user"></i></a></li>
-		</ul>
-	</div>
 	<div class="dashboard-container">
 		<div class="dashboard-top">
 			<h1 class="title">Jūsų profilio informacija, {{ $user->email }}</h1>

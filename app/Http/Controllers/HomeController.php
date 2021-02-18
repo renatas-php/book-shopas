@@ -67,7 +67,7 @@ class HomeController extends Controller
     public function books() {
         
         return view('vartotojas.knygos')
-        ->with('myBooks', Book::where('user_id', auth()->user()->id)->where('approved', false)->get());
+        ->with('myBooks', Book::where('user_id', auth()->user()->id)->get());
 
     }
 }

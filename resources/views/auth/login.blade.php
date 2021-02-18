@@ -19,7 +19,7 @@
     
 				<!-- Welcome Text -->
 				<div class="welcome-text">
-					<h3>We're glad to see you again!</h3>
+					<h3>Malonu Jus vėl matyti!</h3>
 					<span>Neturite paskyros? <a href="{{ route('register') }}">Užsiregistruok!</a></span>
 				</div>
 			<form method="POST" action="{{ route('login') }}">
@@ -55,7 +55,7 @@
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
+                                        {{ __('Prisiminti mane') }}
                                     </label>
                                 </div>
 				<!-- Button -->

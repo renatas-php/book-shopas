@@ -1,7 +1,11 @@
 
             <!-- Logged user notifications bar -->
             <li>
-            <button id="notes" class=""><i class="fas fa-bell"><span>2</span></i></button>
+            <button id="notes" class=""><i class="fas fa-bell">
+            @if($userUnreadNotes->count() > 0)
+            <span>{{ $userUnreadNotes->count() }}</span>
+            @endif
+            </i></button>
             <div class="drop-menu-notes">
             <ul class="notifications">
             @forelse($userUnreadNotes as $note)

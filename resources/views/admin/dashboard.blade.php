@@ -47,8 +47,12 @@
 			</div>
 		</div>
 		</div>
+		<div class="admin-actions">
+		<a href="{{ route('visi-zanrai') }}" class="dashboard-btn">Žanrai</a>
+		<a href="{{ route('visi-autoriai') }}" class="dashboard-btn">Autoriai</a>
+		</div>
 		<div class="notes">
-			<h2>Pasiūlytos, bet dar nepatvirtintos knygos</h2>
+			<h2>Pasiūlytos knygos</h2>
 			<!-- Single Note -->
 			@foreach($books as $book)
 			<div class="single-note">

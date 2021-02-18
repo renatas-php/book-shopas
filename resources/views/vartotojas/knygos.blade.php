@@ -50,7 +50,7 @@
 						Knygos pavadinimas: <strong> {{ $book->title }} </strong>
 						</span>
 						<span class="single-note-text">
-						Įkėlė: <strong> </strong>
+						Įkėlė: <strong> {{ $book->user->email }} </strong>
 						</span>
 						<span class="single-note-text">
 						Kaina: <strong> {{ $book->price }} </strong>
@@ -60,9 +60,10 @@
 						</span>
 						<div class="single-note-actions">
 							@if($book->approved === 1)
-							<button type="" class="single-note-look-btn turn-off">Išjungti </button>							
+							<button type="button" class="single-note-look-btn turn-off">Knyga patvirtinta </button>
+							@else
+							<button type="button" class="single-note-look-btn turn-off">Knyga nepatvirtinta </button>							
 							@endif
-							<a href="" class="single-note-look-btn"> </a>
 						</div>
 					</div>
 				</div>
