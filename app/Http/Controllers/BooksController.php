@@ -6,6 +6,8 @@ use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Http\Requests\BookCreateRequest;
+use App\Http\Requests\BookUpdateRequest;
+
 use App\Notifications\BookApproved;
 
 
@@ -27,10 +29,10 @@ class BooksController extends Controller
     {     
         $books = new Book();
         if(request()->filled('title')){
-            $books = Book::where('title', 'like', '%' . request('title') . '%')
+            $books = Book::with('authors')->with('genres')->where('title', 'like', '%' . request('title') . '%')
             ->orWhere('description', 'like', '%' . request('title') . '%');                   
         }
-        $books = $books->orderBy('created_at', 'desc')->where('approved', true)->simplePaginate(25)->appends([
+        $books = $books->with('authors')->with('genres')->latest()->where('approved', true)->simplePaginate(25)->appends([
             'title' => request('title')
         ]);
         return view('index')
@@ -90,7 +92,7 @@ class BooksController extends Controller
      */
     public function show(Book $book)
     {   
-        $comments = Comment::where('book_id', $book->id)->get();
+        $comments = Comment::where('book_id', $book->id)->latest()->get();
         return view('knygos.pavienis')->with(compact('book'))
         ->with('comments', $comments);
     }
@@ -113,27 +115,24 @@ class BooksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Book $book)
+    public function update(BookUpdateRequest $request, Book $book)
     {
 
-        $data = $request->only(['title', 'price',
-         'cover_img', 'discount', 'description']);
-        
         if($request->file('cover_img')){
-        
             $file = $request->file('cover_img')->store('covers');           
-
-            $data['cover_img'] = $file;
-        }
-        
+        }        
+        $book->update([
+            'title' => $request->title,
+            'price' => $request->price,
+            'discount' => $request->discount,
+            'description' => $request->description,
+        ]);
         if($request->genre) {
-            $bookInsert->genres()->attach($request->genre);
+            $book->genres()->attach($request->genre);
         }
         if($request->author) {
-            $bookInsert->authors()->attach($request->author);
+            $book->authors()->attach($request->author);
         }
-        
-        $book->update($data);
 
         session()->flash('ok', 'Informacija apie knygą atnaujinta');
 

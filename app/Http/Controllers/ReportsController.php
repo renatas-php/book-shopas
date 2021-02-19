@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ReportCreateRequest;
 
 use App\Models\Book;
 use App\Models\Report;
@@ -16,11 +17,7 @@ class ReportsController extends Controller
      */
     public function index()
     {
-        $rr = Report::all();
-        foreach($rr as $r) {
-            
-            dd($r->user->id);
-        }
+     
        
     }
 
@@ -40,7 +37,7 @@ class ReportsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ReportCreateRequest $request)
     {
         $bookReport = Report::create([
             'book_id' => $request->book_id,

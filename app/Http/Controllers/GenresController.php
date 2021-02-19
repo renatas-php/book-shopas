@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\AuthorGenreCreateRequest;
 
 use App\Models\Genre;
 
@@ -35,7 +36,7 @@ class GenresController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AuthorGenreCreateRequest $request)
     {
         $genreInsert = Genre::create([
             'name' => $request->name
@@ -73,7 +74,7 @@ class GenresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Genre $genre)
+    public function update(AuthorGenreCreateRequest $request, Genre $genre)
     {
         $genre->update([
             'name' => $request->name

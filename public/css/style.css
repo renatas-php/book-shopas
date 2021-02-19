@@ -538,6 +538,14 @@ input:focus {
 .dashboard-container .notes .single-note .single-note-actions {
     margin-top: 15px;
 }
+.dashboard-container .notes .single-note .single-note-actions .book-approved-user {
+    background: #17195f;
+    font-family: system-ui;
+    padding: 5px 10px;
+    color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 3px 9px rgb(0 0 0 / 17%);
+}
 .dashboard-container .notes .single-note .single-note-actions .single-note-look-btn {
     background: #3de8b1;
     color: white;

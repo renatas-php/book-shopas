@@ -29,20 +29,20 @@
 		<a class="some-element" href="{{ route('mano-knygos') }}">
 			<div class="">
 				<h2>Pasiūlyta knygų</h2>
-				<p>2</p>
+				<p>{{ $myBooks->count() }}</p>
 			</div>
 		</a>
 
 			<div class="some-element">
 				<h2>Patvirtintos knygos</h2>
-				<p>2</p>
+				<p></p>
 			</div>
 		</div>
 		</div>
 		<div class="notes">
 			<h2>Pranešimai</h2>
 			<!-- Single Note -->
-			@foreach($userUnreadNotes as $note)
+			@forelse($userUnreadNotes as $note)
 			<div class="single-note">                  
                   <span class="single-note-text">
                     Jūsų pasiūlyta knyga <a href="{{ route('knyga', auth()->user()->bookByIdForNotifications($note->data['book_id'])->slug) }}">{{ auth()->user()->bookByIdForNotifications($note->data['book_id'])->title }}</a> <strong>Patvirtinta </strong>
@@ -52,9 +52,50 @@
                    <a href="{{ route('knyga', auth()->user()->bookByIdForNotifications($note->data['book_id'])->slug) }}" class="single-note-look-btn">Peržiūrėti </a>
                   </div>                  
 			</div>
-			@endforeach
+			@empty
+			<div class="single-note">                  
+                  <span class="single-note-text">
+                    Pranešimų nėra
+                  </span>                 
+			</div>
+			@endforelse
 			<!-- Single Note End -->
-		</div>		
+		</div>
+		<div class="notes">
+		<!-- My Books Item -->
+		<h2>Pasiūlytos knygos</h2>
+		@forelse($myBooks as $myBook)
+		
+		<div class="single-note">
+			<div class="display-flex">
+						<img class="book-cover" src="img/1.jpg">
+					<div class="display-flex flex-column padding-30">              
+						<span class="single-note-text">
+						Knygos pavadinimas: <strong> {{ $myBook->title }} </strong>
+						</span>
+						<span class="single-note-text">
+						Įkėlė: <strong>{{ $myBook->user->email }} </strong>
+						</span>
+						<span class="single-note-text">
+						Kaina: <strong> {{ $myBook->price }} </strong>
+						</span>
+						<span class="single-note-text">
+						Įkėlimo data: <strong> {{ $myBook->created_at }}</strong>
+						</span>
+						<div class="single-note-actions">
+							@if($myBook->approved !== 1)
+							<a href="{{ route('redaguoti-knyga', $myBook->slug) }}" class="single-note-look-btn">Redagouti </a>
+							@else
+							<button type="button" class="book-approved-user">Knyga patvirtinta</button>
+							@endif
+						</div>
+					</div>
+				</div>
+			</div>
+			@empty
+
+			@endforelse
+			</div>
 	</div>
 </div>
 

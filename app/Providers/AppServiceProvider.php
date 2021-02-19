@@ -57,6 +57,9 @@ class AppServiceProvider extends ServiceProvider
         View::composer(['knygos.ideti'], function($view) {
             $view->with('authors', Author::all())->with('genres', Genre::all());
         });
+        View::composer(['vartotojas.dashboard'], function($view) {
+            $view->with('myBooks', Book::where('user_id', auth()->user()->id)->get());
+        });
         
     }
 }
