@@ -40,7 +40,7 @@
         @foreach($books as $book)
 		<!-- Book Item -->		
 		<div class="book-item">
-		<a href="{{ route('knyga', $book->slug) }}">
+		<a href="{{ route('knyga', $book->id) }}">
 			@if($book->lastWeek($book->created_at))
 			<span class="this-week">Šios savaitės</span>
 			@endif

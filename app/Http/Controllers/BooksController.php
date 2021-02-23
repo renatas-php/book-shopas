@@ -92,9 +92,7 @@ class BooksController extends Controller
      */
     public function show(Book $book)
     {   
-        $comments = Comment::where('book_id', $book->id)->latest()->get();
-        return view('knygos.pavienis')->with(compact('book'))
-        ->with('comments', $comments);
+        return view('knygos.pavienis')->with(compact('book'));
     }
 
     /**

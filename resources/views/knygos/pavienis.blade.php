@@ -60,7 +60,7 @@
 
 		<div class="comment-section">
 		<h1 class="title">Komentarai</h1>
-		@foreach($comments as $comment)
+		@foreach($book->comments as $comment)
 		<div class="comment">
 			<div class="comment-author">
 				<img src="{{ asset('img/1.jpg') }}">
