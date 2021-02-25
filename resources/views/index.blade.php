@@ -49,7 +49,9 @@
 			@endif
 			<img class="main-img" src="{{ asset($book->cover_img) }}">
 			<div class="description">
-				<h1 class="title">{{ $book->title }}</h1>
+				<h1 class="title">{{ $book->title }} 
+
+				</h1>
 				@foreach($book->authors as $author)
 				<p class="author">				
 				{{ $author->name }}				

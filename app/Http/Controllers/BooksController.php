@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Http\Requests\BookCreateRequest;
 use App\Http\Requests\BookUpdateRequest;
+use Illuminate\Support\Str;
 
 use App\Notifications\BookApproved;
 
@@ -35,6 +36,7 @@ class BooksController extends Controller
         $books = $books->with('authors')->with('genres')->latest()->where('approved', true)->simplePaginate(25)->appends([
             'title' => request('title')
         ]);
+
         return view('index')
         ->with('books', $books);
     }
@@ -57,7 +59,7 @@ class BooksController extends Controller
      */
     public function store(BookCreateRequest $request)
     {   
-        $slug = str_replace(' ', '-', $request->title);
+        $slug = str::slug($request->title);
 
         $file = 'default_cover.jpg';
         if($request->file('cover_img')){
@@ -65,7 +67,7 @@ class BooksController extends Controller
         }
         
         $bookInsert = Book::create([
-            'user_id' => auth()->user()->id,
+            'user_id' => auth()->id(),
             'title' => $request->title,
             'price' => $request->price,
             'cover_img' => $file,
@@ -92,7 +94,8 @@ class BooksController extends Controller
      */
     public function show(Book $book)
     {   
-        return view('knygos.pavienis')->with(compact('book'));
+        $rating = Comment::where('book_id', $book->id)->pluck('rating')->avg();
+        return view('knygos.pavienis')->with(compact('book', 'rating'));
     }
 
     /**

@@ -36,7 +36,16 @@
 		<div class="book-info">
 			<div class="main-info">
 				<h1 class="title">{{ $book->title }} 
-					
+					<div class="user-rating">Knygos įvertinimas:
+						@if(!empty($rating))
+						@for ($i = 0; $i < $rating; $i++)
+						<i class="fas fa-star"></i>
+						@endfor
+						@else
+						nėra
+						@endif
+						({{ number_format($rating,1) }})
+					</div>
 				</h1>
 				<div class="author-rating">
 				@foreach($book->authors as $author)				

@@ -418,6 +418,14 @@ input:focus {
     border-bottom: 1px solid #e0e0e0;
     margin: 0 40px;
 }
+.book-single .book-info .main-info .title .user-rating {
+    font-size: 15px;
+    font-weight: 200;
+}
+.book-single .book-info .main-info .title .user-rating i{
+    color: #ecc65a;
+    font-size: 15px;
+}
 .book-single .main-info .author-rating .author {
 	padding: 0 50px;
     font-size: 17px;
