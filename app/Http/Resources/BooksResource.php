@@ -21,6 +21,7 @@ class BooksResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'cover_img' => asset($this->cover_img),
+            'description' => $this->when($request->book, $this->description),
             'authors' => $this->authors()->pluck('name')->implode(', '),
             'genres' => $this->genres()->pluck('name')->implode(', ')
         ];

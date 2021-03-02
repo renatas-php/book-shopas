@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -18,8 +18,11 @@ class BooksController extends Controller
         return BooksResource::collection($books);
     }
     public function show(Book $book) {
-
+        
         $book->load('authors', 'genres');
-        return new BookResource($book);
+
+        return new BooksResource($book);
+
+        
     }
 }

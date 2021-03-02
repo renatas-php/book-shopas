@@ -12,6 +12,8 @@
 ================================================== -->
 @include('includes.css')
 @include('partials.topnav')
+</head>
+<body>
 <div class="container">
 	
 	<div class="search-box">
@@ -35,17 +37,8 @@
 		</div>
 		<div class="book-info">
 			<div class="main-info">
-				<h1 class="title">{{ $book->title }} 
-					<div class="user-rating">Knygos įvertinimas:
-						@if(!empty($rating))
-						@for ($i = 0; $i < $rating; $i++)
-						<i class="fas fa-star"></i>
-						@endfor
-						@else
-						nėra
-						@endif
-						({{ number_format($rating,1) }})
-					</div>
+				<h1 class="title">{{ $book->title }}
+				
 				</h1>
 				<div class="author-rating">
 				@foreach($book->authors as $author)				
@@ -69,22 +62,9 @@
 
 		<div class="comment-section">
 		<h1 class="title">Komentarai</h1>
-		@foreach($book->comments as $comment)
-		<div class="comment">
-			<div class="comment-author">
-				<img src="{{ asset('img/1.jpg') }}">
-				<h2>{{ $comment->user->email }}</h2>
-			</div>
-			<div class="user-rating">
-			@for ($i = 0; $i < $comment->rating; $i++)
-			<i class="fas fa-star"></i>
-			@endfor
-			</div>
-			<div class="actual-comment">
-			<p>{{ $comment->comment }}<span>{{ $comment->created_at }}</span></p>
-			</div>
-		</div>
-		@endforeach
+				<div id="app">
+					<comments></comments>
+				</div>
 		<form class="comments" action="{{ route('komentuoti') }}" method="POST" id="comment">
 		@csrf
 		<div class="rating-div">
@@ -102,7 +82,7 @@
 						<label for="star1" title="text">1 star</label>
 						</div>
 						<div class="clearfix"></div>
-					</div>
+		</div>
 		<textarea class="comment-area" name="comment"></textarea>
 		<input type="hidden" name="book_id"  value="{{ $book->id }}">
 		<button class="comment-btn" form="comment">Komentuoti</button>
@@ -112,9 +92,7 @@
 	</div>
 </div>
 
-</head>
-<body>
 
-
+<script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

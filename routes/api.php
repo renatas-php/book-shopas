@@ -3,7 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Api\BooksController;
+use App\Http\Controllers\Api\V1\BooksController;
+use App\Http\Controllers\Api\V1\CommentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::get('books', [BooksController::class, 'index']);
 Route::get('books/{book}', [BooksController::class, 'show']);
+
+Route::get('books/{book}/comments', [CommentsController::class, 'index']);
+

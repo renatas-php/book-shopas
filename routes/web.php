@@ -25,6 +25,8 @@ Auth::routes();
 //Public routes
 Route::get('/', [BooksController::class, 'index'])->name('index');
 Route::get('/knyga/{book}', [BooksController::class, 'show'])->name('knyga');
+Route::get('{book}/comments', [CommentsController::class, 'comments']);
+
 
 Route::middleware(['auth'])->group(function () {
 
@@ -47,6 +49,8 @@ Route::middleware(['auth'])->group(function () {
     
     //Comments store
     Route::post('komentuoti', [CommentsController::class, 'store'])->name('komentuoti');
+
+
 
     Route::middleware(['admin'])->group(function () {
 
