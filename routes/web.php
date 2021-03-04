@@ -25,7 +25,7 @@ Auth::routes();
 //Public routes
 Route::get('/', [BooksController::class, 'index'])->name('index');
 Route::get('/knyga/{book}', [BooksController::class, 'show'])->name('knyga');
-Route::get('{book}/comments', [CommentsController::class, 'comments']);
+//Route::get('{book}/comments', [CommentsController::class, 'comments']);
 
 
 Route::middleware(['auth'])->group(function () {

@@ -10,6 +10,7 @@
 
 <!-- CSS
 ================================================== -->
+@livewireStyles
 @include('includes.css')
 @include('partials.topnav')
 </head>
@@ -38,7 +39,7 @@
 		<div class="book-info">
 			<div class="main-info">
 				<h1 class="title">{{ $book->title }}
-				
+				@livewire('rating', ['book' => $book->id])
 				</h1>
 				<div class="author-rating">
 				@foreach($book->authors as $author)				
@@ -62,37 +63,14 @@
 
 		<div class="comment-section">
 		<h1 class="title">Komentarai</h1>
-				<div id="app">
-					<comments></comments>
-				</div>
-		<form class="comments" action="{{ route('komentuoti') }}" method="POST" id="comment">
-		@csrf
-		<div class="rating-div">
-						<strong>Įvertinkite</strong>
-						<div class="rate">
-						<input type="radio" id="star5" name="rating" value="5" />
-						<label for="star5" title="text">5 stars</label>
-						<input type="radio" id="star4" name="rating" value="4" />
-						<label for="star4" title="text">4 stars</label>
-						<input type="radio" id="star3" name="rating" value="3" />
-						<label for="star3" title="text">3 stars</label>
-						<input type="radio" id="star2" name="rating" value="2" />
-						<label for="star2" title="text">2 stars</label>
-						<input type="radio" id="star1" name="rating" value="1" />
-						<label for="star1" title="text">1 star</label>
-						</div>
-						<div class="clearfix"></div>
-		</div>
-		<textarea class="comment-area" name="comment"></textarea>
-		<input type="hidden" name="book_id"  value="{{ $book->id }}">
-		<button class="comment-btn" form="comment">Komentuoti</button>
-		</form>
+				@livewire('comments', ['book' => $book->id])
+				@livewire('add-comment', ['book' => $book->id])
 		</div>
 		
 	</div>
 </div>
 
-
+@livewireScripts
 <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

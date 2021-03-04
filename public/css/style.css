@@ -617,8 +617,10 @@ input:focus {
 }
 .comment-section .comment .comment-author img{
     height: 60px;
+    width: 60px;
     border-radius: 50%;
     object-fit: cover;
+    background: #e0e0e0;
 }
 .comment-section .comment .comment-author h2{
     padding: 0 10px;
